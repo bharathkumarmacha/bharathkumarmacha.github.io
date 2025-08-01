@@ -1,0 +1,20 @@
+[
+  {
+    "title": "Chatbot",
+    "description": "Manage and interact with your AI chatbot.",
+    "path": "/chatbot",
+    "icon": "🤖"
+  },
+  {
+    "title": "Email",
+    "description": "Access your inbox, sent mail, and drafts.",
+    "path": "/email",
+    "icon": "✉️"
+  },
+  {
+    "title": "Analytics",
+    "description": "View analytics and reports for your applications.",
+    "path": "/analytics",
+    "icon": "📊"
+  }
+]

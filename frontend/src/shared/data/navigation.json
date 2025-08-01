@@ -1,0 +1,41 @@
+{
+  "links": [
+    {
+      "title": "Dashboard",
+      "path": "/",
+      "image": "https://img.icons8.com/ios-filled/24/000000/dashboard.png",
+      "subscription": {
+        "requiredTier": "basic",
+        "roles": ["user", "basic_subscriber"],
+        "status": "active"
+      }
+    },
+    {
+      "title": "Chatbot",
+      "path": "/chatbot",
+      "subscription": {
+        "requiredTier": "premium",
+        "roles": ["user", "premium_subscriber"],
+        "status": "active"
+      },
+      "sublinks": [
+        { "title": "Bot Settings", "path": "/chatbot/settings", "subscription": { "requiredTier": "premium", "roles": ["user", "premium_subscriber"], "status": "active" } },
+        { "title": "Bot Analytics", "path": "/chatbot/analytics", "subscription": { "requiredTier": "pro", "roles": ["user", "pro_subscriber"], "status": "active" } }
+      ]
+    },
+    {
+      "title": "Email",
+      "path": "/email",
+      "subscription": {
+        "requiredTier": "basic",
+        "roles": ["user", "basic_subscriber"],
+        "status": "active"
+      },
+      "sublinks": [
+        { "title": "Inbox", "path": "/email/inbox", "subscription": { "requiredTier": "basic", "roles": ["user", "basic_subscriber"], "status": "active" } },
+        { "title": "Sent", "path": "/email/sent", "subscription": { "requiredTier": "basic", "roles": ["user", "basic_subscriber"], "status": "active" } },
+        { "title": "Drafts", "path": "/email/drafts", "subscription": { "requiredTier": "premium", "roles": ["user", "premium_subscriber"], "status": "active" } }
+      ]
+    }
+  ]
+}

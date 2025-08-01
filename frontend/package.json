@@ -1,0 +1,53 @@
+{
+  "name": "chatbot-frontend",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "start": "npx cross-env NODE_ENV=development react-scripts start",
+    "build": "npx cross-env NODE_ENV=production react-scripts build",
+    "test": "npx cross-env NODE_ENV=test react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "dependencies": {
+    "@fortawesome/free-solid-svg-icons": "^6.6.0",
+    "@fortawesome/react-fontawesome": "^0.2.2",
+    "@types/react": "^18.2.55",
+    "@types/react-dom": "^18.2.19",
+    "axios": "^1.6.2",
+    "cross-env": "^7.0.3",
+    "moment": "^2.30.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-markdown": "^9.0.1",
+    "react-router-dom": "^6.22.0",
+    "react-scripts": "^5.0.1",
+    "typescript": "^4.9.5"
+  },
+  "devDependencies": {
+    "@types/moment": "^2.13.0",
+    "@types/node": "^18.19.3",
+    "autoprefixer": "^10.4.16",
+    "html-webpack-plugin": "^5.6.3",
+    "postcss": "^8.4.31",
+    "tailwindcss": "^3.3.5",
+    "webpack": "^5.99.8"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
