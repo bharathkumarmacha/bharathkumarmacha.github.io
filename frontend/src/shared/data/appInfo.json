@@ -1,0 +1,8 @@
+{
+  "appName": "My Interactive App",
+  "appVersion": "1.0.0",
+  "appAuthor": "Bharath kumar",
+  "appLicense": "MIT",
+  "appLogo": "/logos/sample-logo.svg",  
+  "appDescription": "A platform to manage and interact with various applications seamlessly."
+}
