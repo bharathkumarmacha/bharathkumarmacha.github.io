@@ -33,7 +33,8 @@ jobs:
       - name: Install and build
         working-directory: ./frontend
         run: |
-          npm install
+          npm ci
+          npm rebuild rollup --force
           npm run build
 
       - name: Deploy
