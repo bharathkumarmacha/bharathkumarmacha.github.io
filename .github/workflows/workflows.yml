@@ -1,9 +1,9 @@
-name: "Git hub pages deploy"
+name: "GitHub Pages Deploy"
 
 on:
   push:
     branches:
-        - "master"
+      - "master"
 
 jobs:
   build:
@@ -15,24 +15,25 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v1
+        uses: actions/checkout@v4
 
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
-          
-      - name: Cache npm dependencies
+
+      - name: Cache npm
         uses: actions/cache@v4
         with:
-          path: frontend/node_modules
+          path: ~/.npm
           key: ${{ runner.os }}-node-${{ hashFiles('frontend/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-node-
-            
+
       - name: Install and build
         working-directory: ./frontend
         run: |
+          rm -rf node_modules
           npm ci
           npm rebuild rollup --force
           npm run build
