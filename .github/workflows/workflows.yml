@@ -15,15 +15,15 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
 
       - name: Cache npm dependencies
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: frontend/node_modules
           key: ${{ runner.os }}-node-${{ hashFiles('frontend/package-lock.json') }}
@@ -44,8 +44,20 @@ jobs:
         working-directory: ./frontend
         run: npm run build
 
+      - name: Detect build folder
+        id: detect-folder
+        run: |
+          if [ -d "frontend/dist" ]; then
+            echo "build_dir=frontend/dist" >> $GITHUB_OUTPUT
+          elif [ -d "frontend/build" ]; then
+            echo "build_dir=frontend/build" >> $GITHUB_OUTPUT
+          else
+            echo "❌ No build folder found!"
+            exit 1
+          fi
+
       - name: Deploy
-        uses: JamesIves/github-pages-deploy-action@4.1.1
+        uses: JamesIves/github-pages-deploy-action@v4.6.0
         with:
           branch: gh-pages
-          folder: frontend/dist
+          folder: ${{ steps.detect-folder.outputs.build_dir }}
