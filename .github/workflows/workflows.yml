@@ -17,11 +17,19 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v1
 
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+
       - name: Install and build
-        run: npm install && npm run build
-      
+        working-directory: ./frontend
+        run: |
+          npm install
+          npm run build
+
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@4.1.1
         with:
           branch: gh-pages
-          folder: build
+          folder: frontend/build
