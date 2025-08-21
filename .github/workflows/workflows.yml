@@ -1,4 +1,4 @@
-name: "GitHub Pages Deploy"
+name: GitHub Pages Deploy
 
 on:
   push:
@@ -15,31 +15,37 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v3
 
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
 
-      - name: Cache npm
-        uses: actions/cache@v4
+      - name: Cache npm dependencies
+        uses: actions/cache@v3
         with:
-          path: ~/.npm
+          path: frontend/node_modules
           key: ${{ runner.os }}-node-${{ hashFiles('frontend/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-node-
 
-      - name: Install and build
+      - name: Install dependencies
+        working-directory: ./frontend
+        run: npm ci
+
+      - name: Fix Rollup native binary (Linux)
         working-directory: ./frontend
         run: |
-          rm -rf node_modules
-          npm ci
+          npm install @rollup/rollup-linux-x64-gnu --save-dev --force
           npm rebuild rollup --force
-          npm run build
+
+      - name: Build
+        working-directory: ./frontend
+        run: npm run build
 
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@4.1.1
         with:
           branch: gh-pages
-          folder: frontend/build
+          folder: frontend/dist
